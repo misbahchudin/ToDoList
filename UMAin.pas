@@ -71,7 +71,6 @@ type
   private
     { Private declarations }
     function PathDirectory: string;
-    function RefreshFile(fDirFile: string): TStrings;
     procedure FindFilePattern(root: String; pattern: String);
     procedure RefreshCount;
   public
@@ -532,28 +531,6 @@ begin
   StatusBar1.Panels[1].Text := IntToStr(ListBox1.Items.Count);
   /// Jumlah data Inifile
   StatusBar1.Panels[3].Text := IntToStr(ListView1.Items.Count);
-end;
-
-function TForm1.RefreshFile(fDirFile: string): TStrings;
-// var
-// LStringList: TStringList;
-begin
-  try
-    // LStringList := TStringList.Create;
-
-    Result.Create;
-
-    with Result do
-    begin
-      Add('File01');
-      Add('File02');
-      Add('File03');
-      Add('File04');
-    end;
-
-  finally
-    // LStringList.Free;
-  end;
 end;
 
 end.

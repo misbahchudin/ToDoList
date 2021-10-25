@@ -33,8 +33,6 @@ object Form1: TForm1
         Align = alLeft
         Caption = 'Options'
         TabOrder = 0
-        ExplicitTop = 82
-        ExplicitHeight = 339
         object Button1: TButton
           Left = 2
           Top = 15
@@ -53,7 +51,6 @@ object Form1: TForm1
           ItemHeight = 13
           TabOrder = 1
           OnDblClick = ListBox1DblClick
-          ExplicitHeight = 250
         end
         object Button2: TButton
           Left = 2
@@ -139,8 +136,6 @@ object Form1: TForm1
         TabOrder = 2
         ViewStyle = vsReport
         OnColumnClick = ListView1ColumnClick
-        ExplicitTop = 82
-        ExplicitHeight = 339
       end
       object StatusBar1: TStatusBar
         Left = 0
@@ -162,9 +157,6 @@ object Form1: TForm1
           item
             Width = 80
           end>
-        ExplicitLeft = 368
-        ExplicitTop = 200
-        ExplicitWidth = 0
       end
     end
   end
