@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/06/05 18:00:00.000.829,=C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/06/05 18:00:00.000.001,=C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\ServerMethodsUnit1.pas</Transaction>
+    <Transaction>2021/06/05 18:00:00.000.657,=C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\ServerContainerUnit1.pas</Transaction>
+    <Transaction>2021/06/06 20:00:00.000.912,=C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/06/25 19:00:00.000.635,=emsserverapi.dcp</Transaction>
+    <Transaction>2021/06/25 19:00:00.000.786,=C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/06/27 18:00:00.000.971,=C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/09/07 08:00:00.000.763,=C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/09/08 09:00:00.000.168,=C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/09/15 19:00:00.000.267,C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\Unit1.pas=D:\Work\2021\Uniwa\GENAP\Pemrograman Visual\LocalFile\UMAin.pas</Transaction>
+    <Transaction>2021/09/15 19:00:00.000.141,=C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/09/15 19:00:00.000.267,C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\Unit1.dfm=D:\Work\2021\Uniwa\GENAP\Pemrograman Visual\LocalFile\UMAin.dfm</Transaction>
+    <Transaction>2021/09/15 19:00:00.000.909,C:\Users\DevAlien\Documents\Embarcadero\Studio\Projects\Project1.dproj=D:\Work\2021\Uniwa\GENAP\Pemrograman Visual\LocalFile\ToDoList.dproj</Transaction>
+    <Transaction>2021/10/13 20:51:15.000.068,=D:\Work\2021\Uniwa\GENAP\Pemrograman Visual\LocalFile\ToDoList.todo</Transaction>
+    <Transaction>2021/10/13 21:28:57.000.003,D:\Work\2021\Uniwa\GENAP\Pemrograman Visual\LocalFile\Absensi.dproj=D:\Work\2021\Uniwa\GENAP\Pemrograman Visual\LocalFile\ToDoList.dproj</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>
