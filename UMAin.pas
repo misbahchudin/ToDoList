@@ -20,7 +20,8 @@ uses
   Vcl.Menus,
   System.Actions,
   Vcl.ActnList,
-  Vcl.ComCtrls, Vcl.Mask;
+  Vcl.ComCtrls,
+  Vcl.Mask;
 
 type
   TForm1 = class(TForm)
@@ -92,8 +93,7 @@ implementation
 
 {$R *.dfm}
 
-function CustomSortProc(Item1, Item2: TListItem; SortColumn: Integer)
-  : Integer; stdcall;
+function CustomSortProc(Item1, Item2: TListItem; SortColumn: Integer): Integer; stdcall;
 var
   s1, s2: string;
   i1, i2: Integer;
@@ -117,7 +117,7 @@ var
       ADateTime := StrToDateTime(AString);
     except
       ADateTime := 0;
-      Result := False;
+      Result    := False;
     end;
   end;
 
@@ -174,16 +174,16 @@ begin
       Result := lstrcmp(PChar(s1), PChar(s2));
     cssNumeric:
       begin
-        r1 := IsValidNumber(s1, i1);
-        r2 := IsValidNumber(s2, i2);
+        r1     := IsValidNumber(s1, i1);
+        r2     := IsValidNumber(s2, i2);
         Result := ord(r1 or r2);
         if Result <> 0 then
           Result := CompareNumeric(i2, i1);
       end;
     cssDateTime:
       begin
-        r1 := IsValidDate(s1, d1);
-        r2 := IsValidDate(s2, d2);
+        r1     := IsValidDate(s1, d1);
+        r2     := IsValidDate(s2, d2);
         Result := ord(r1 or r2);
         if Result <> 0 then
           Result := CompareDates(d1, d2);
@@ -199,7 +199,7 @@ end;
 procedure TForm1.AcSimpanExecute(Sender: TObject);
 var
   LIniFile: TIniFile;
-  I: Integer;
+  I       : Integer;
 begin
   /// Save Data IniFile Format
   try
@@ -217,6 +217,7 @@ begin
         WriteString(IntToStr(I), 'Nama', Items[I].SubItems[0]);
         WriteString(IntToStr(I), 'Status', Items[I].SubItems[1]);
         WriteString(IntToStr(I), 'Keterangan', Items[I].SubItems[2]);
+        WriteString(IntToStr(I), 'Tanggal', Items[I].SubItems[3]);
       end;
     end;
 
@@ -235,8 +236,7 @@ begin
   /// Delete ListView
   with ListView1 do
   begin
-    case MessageDlg('Apakah Anda Ingin Menghapus?', mtConfirmation,
-      [mbYes, mbNo], 0) of
+    case MessageDlg('Apakah Anda Ingin Menghapus?', mtConfirmation, [mbYes, mbNo], 0) of
       mrYes:
         begin
           Items[ItemIndex].Delete;
@@ -253,12 +253,10 @@ end;
 procedure TForm1.ActHapusFileExecute(Sender: TObject);
 begin
   /// Delete File
-  case MessageDlg('Apakah anda Yakin ingin menghapus file?',
-    TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) of
+  case MessageDlg('Apakah anda Yakin ingin menghapus file?', TMsgDlgType.mtConfirmation, [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo], 0) of
     mrYes:
       begin
-        if FileExists(LPath.Caption + '\' + ListBox1.Items[ListBox1.ItemIndex])
-        then
+        if FileExists(LPath.Caption + '\' + ListBox1.Items[ListBox1.ItemIndex]) then
         begin
           DeleteFile(LPath.Caption + '\' + ListBox1.Items[ListBox1.ItemIndex]);
           ActListFileExecute(Sender);
@@ -283,11 +281,11 @@ end;
 
 procedure TForm1.ActOpenExecute(Sender: TObject);
 var
-  LIniFile: TIniFile;
+  LIniFile   : TIniFile;
   LStringList: TStringList;
-  I: Integer;
-  LI: TListItem;
-  fFileName: String;
+  I          : Integer;
+  LI         : TListItem;
+  fFileName  : String;
 begin
   /// Pilih File
   with OpenDialog1 do
@@ -295,7 +293,7 @@ begin
     Execute;
     /// baca File
     try
-      LIniFile := TIniFile.Create(FileName);
+      LIniFile    := TIniFile.Create(FileName);
       LStringList := TStringList.Create;
       LIniFile.ReadSections(LStringList);
 
@@ -309,7 +307,7 @@ begin
           /// Loop Data From IniFile
           for I := 0 to LStringList.Count - 1 do
           begin
-            LI := Items.Add;
+            LI         := Items.Add;
             LI.Caption := IntToStr(I);
             LI.SubItems.Add(ReadString(IntToStr(I), 'Nama', ''));
             LI.SubItems.Add(ReadString(IntToStr(I), 'Status', ''));
@@ -337,18 +335,20 @@ end;
 
 procedure TForm1.ActTambahExecute(Sender: TObject);
 var
-  LAValue: array [0 .. 3] of string;
+  LAValue  : array [0 .. 3] of string;
   LocalItem: TListItem;
-  fNumber: Integer;
+  fNumber  : Integer;
 begin
   /// Isi data
   LAValue[0] := '';
   LAValue[1] := '';
   LAValue[2] := '';
-  InputQuery('Input Data', ['Nama', 'Status', 'Keterangan'], LAValue);
+  LAValue[3] := FormatDateTime('dd mmmm yyyy hh:nn:ss', Now);
+
+  InputQuery('Input Data', ['Nama', 'Status', 'Keterangan', 'Tanggal'], LAValue);
 
   // Masukkan Ke ListView
-  fNumber := ListView1.Items.Count + 1;
+  fNumber   := ListView1.Items.Count + 1;
   LocalItem := ListView1.Items.Add;
 
   with LocalItem do
@@ -357,6 +357,7 @@ begin
     SubItems.Add(LAValue[0]);
     SubItems.Add(LAValue[1]);
     SubItems.Add(LAValue[2]);
+    SubItems.Add(LAValue[3]);
   end;
 
   // Hitung Jumlah
@@ -397,8 +398,7 @@ begin
   /// Rename File
   NewFile := ReplaceStr(ListBox1.Items[ListBox1.ItemIndex], '.ini', '');
   InputQuery('Rename File', 'Masukkan Nama File Baru', NewFile);
-  RenameFile(PathDirectory + '\' + ListBox1.Items[ListBox1.ItemIndex],
-    PathDirectory + '\' + NewFile + '.ini');
+  RenameFile(PathDirectory + '\' + ListBox1.Items[ListBox1.ItemIndex], PathDirectory + '\' + NewFile + '.ini');
 
   { Refresh ListFile }
   ActListFileExecute(Sender);
@@ -412,7 +412,7 @@ begin
   begin
     ListBox1.Items.BeginUpdate;
     try
-      for I := 0 to ListBox1.Items.Count - 1 do
+      for I                  := 0 to ListBox1.Items.Count - 1 do
         ListBox1.Selected[I] := ContainsText(ListBox1.Items[I], Edit1.Text);
     finally
       ListBox1.Items.EndUpdate;
@@ -462,18 +462,19 @@ end;
 
 procedure TForm1.ListBox1DblClick(Sender: TObject);
 var
-  LIniFile: TIniFile;
+  LIniFile   : TIniFile;
   LStringList: TStringList;
-  LI: TListItem;
-  I: Integer;
+  LI         : TListItem;
+  I          : Integer;
 begin
   /// Read Record From File
   /// baca File
   try
-    LIniFile := TIniFile.Create(LPath.Caption + '\' + ListBox1.Items
-      [ListBox1.ItemIndex]);
+    LIniFile    := TIniFile.Create(LPath.Caption + '\' + ListBox1.Items[ListBox1.ItemIndex]);
     LStringList := TStringList.Create;
     LIniFile.ReadSections(LStringList);
+
+    FileName.Text := ReplaceStr(ListBox1.Items[ListBox1.ItemIndex], '.ini', '');
 
     with LIniFile, ListView1 do
     begin
@@ -485,11 +486,12 @@ begin
         /// Loop Data From IniFile
         for I := 0 to LStringList.Count - 1 do
         begin
-          LI := Items.Add;
+          LI         := Items.Add;
           LI.Caption := IntToStr(I);
           LI.SubItems.Add(ReadString(IntToStr(I), 'Nama', ''));
           LI.SubItems.Add(ReadString(IntToStr(I), 'Status', ''));
           LI.SubItems.Add(ReadString(IntToStr(I), 'Keterangan', ''));
+          LI.SubItems.Add(ReadString(IntToStr(I), 'Tanggal', ''));
         end;
 
       end;

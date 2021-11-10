@@ -3,7 +3,7 @@ object Form1: TForm1
   Top = 0
   Caption = 'Absensi Mahasiswa'
   ClientHeight = 456
-  ClientWidth = 746
+  ClientWidth = 921
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,12 +16,13 @@ object Form1: TForm1
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 746
+    Width = 921
     Height = 456
     ActivePage = TabSheet1
     Align = alClient
     TabHeight = 25
     TabOrder = 0
+    ExplicitWidth = 746
     object TabSheet1: TTabSheet
       Caption = 'Main Source'
       PopupMenu = PM01
@@ -75,11 +76,12 @@ object Form1: TForm1
       object GroupBox2: TGroupBox
         Left = 0
         Top = 0
-        Width = 738
+        Width = 913
         Height = 73
         Align = alTop
         Caption = 'Document Title'
         TabOrder = 1
+        ExplicitWidth = 738
         object Label1: TLabel
           Left = 16
           Top = 20
@@ -112,7 +114,7 @@ object Form1: TForm1
       object ListView1: TListView
         Left = 145
         Top = 73
-        Width = 593
+        Width = 768
         Height = 329
         Align = alClient
         Columns = <
@@ -131,16 +133,23 @@ object Form1: TForm1
           item
             Caption = 'Keterangan'
             Width = 200
+          end
+          item
+            Caption = 'Tanggal'
+            Width = 100
           end>
         PopupMenu = PM01
         TabOrder = 2
         ViewStyle = vsReport
         OnColumnClick = ListView1ColumnClick
+        ExplicitLeft = 177
+        ExplicitTop = 67
+        ExplicitWidth = 593
       end
       object StatusBar1: TStatusBar
         Left = 0
         Top = 402
-        Width = 738
+        Width = 913
         Height = 19
         Panels = <
           item
@@ -157,6 +166,7 @@ object Form1: TForm1
           item
             Width = 80
           end>
+        ExplicitWidth = 738
       end
     end
   end
